@@ -12,6 +12,7 @@ def eye2array(file, debug=False):
 
     #Remove metadata from each trial.
     for i in range(len(strings)):
+
         #Print trial number if debug is on.
         if debug:
             num_end = strings[i].find('of 101)]')-1
@@ -23,10 +24,12 @@ def eye2array(file, debug=False):
         strings[i] = strings[i][1][5:]
         strings[i] = strings[i].split('\n[Task Data]\n')[0]
         strings[i] = strings[i].split('\n')
+        strings[i] = strings[i][1:] #Remove first entry, empty for some reason that I cannot be bothered to fix.
 
         #Convert each reading into numpy array
-        for x in range(len(strings[i])):        
+        for x in range(len(strings[i])):
             strings[i][x] = np.array(strings[i][x].split(), dtype=float)
+        
         strings[i] = np.array(strings[i])
         
     return np.array(strings)
@@ -49,4 +52,5 @@ def punish_all_eyes(folder, debug=False):
     return all_eyes
     
 
-f = punish_all_eyes('RawData', debug=False)
+#f = punish_all_eyes('RawData', debug=False)
+f = eye2array('RawData/ABT2.eye')
