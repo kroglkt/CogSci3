@@ -52,5 +52,4 @@ def punish_all_eyes(folder, debug=False):
     return all_eyes
     
 
-#f = punish_all_eyes('RawData', debug=False)
-f = eye2array('RawData/ABT2.eye')
+f = punish_all_eyes('RawData', debug=False)
