@@ -31,6 +31,8 @@ def eye2array(file, debug=False):
             strings[i][x] = np.array(strings[i][x].split(), dtype=float)
         
         strings[i] = np.array(strings[i])
+        #strings[i][:,2] = pupil diameter - Normalize between 0 and 1.
+        strings[i][:,2] = (strings[i][:,2] - np.min(strings[i][:,2]))/np.ptp(strings[i][:,2])
         
     return np.array(strings)
             
@@ -52,4 +54,4 @@ def punish_all_eyes(folder, debug=False):
     return all_eyes
     
 
-f = punish_all_eyes('RawData', debug=False)
+f = punish_all_eyes('Doves/RawData', debug=False)
