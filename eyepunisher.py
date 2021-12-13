@@ -54,4 +54,5 @@ def punish_all_eyes(folder, debug=False):
     return all_eyes
     
 
-f = punish_all_eyes('Doves/RawData', debug=False)
+if __name__ == '__main__':
+    f = punish_all_eyes('Doves/RawData', debug=False)
